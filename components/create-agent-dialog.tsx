@@ -24,8 +24,8 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 
 const formSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
+  name: z.string().min(2, 'שם חייב להכיל לפחות 2 תווים'),
+  email: z.string().email('כתובת אימייל לא תקינה'),
 })
 
 type FormValues = z.infer<typeof formSchema>
@@ -72,13 +72,13 @@ export function CreateAgentDialog({ onAgentCreated }: CreateAgentDialogProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">Create Agent</Button>
+        <Button variant="outline">צור סוכן</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Create New Agent</DialogTitle>
+          <DialogTitle>צור סוכן חדש</DialogTitle>
           <DialogDescription>
-            Add a new agent to the system who can be assigned to leads.
+            הוסף סוכן חדש למערכת שיוכל לקבל לידים.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -88,9 +88,9 @@ export function CreateAgentDialog({ onAgentCreated }: CreateAgentDialogProps) {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>שם</FormLabel>
                   <FormControl>
-                    <Input placeholder="Jane Smith" {...field} />
+                    <Input placeholder="שרה כהן" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -101,9 +101,9 @@ export function CreateAgentDialog({ onAgentCreated }: CreateAgentDialogProps) {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>אימייל</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="jane@example.com" {...field} />
+                    <Input type="email" placeholder="sarah@example.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -116,10 +116,10 @@ export function CreateAgentDialog({ onAgentCreated }: CreateAgentDialogProps) {
                 onClick={() => setOpen(false)}
                 disabled={isLoading}
               >
-                Cancel
+                ביטול
               </Button>
               <Button type="submit" disabled={isLoading}>
-                {isLoading ? 'Creating...' : 'Create Agent'}
+                {isLoading ? 'יוצר...' : 'צור סוכן'}
               </Button>
             </div>
           </form>

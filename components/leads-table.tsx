@@ -84,7 +84,7 @@ export function LeadsTable({ leads, agents, onUpdate }: LeadsTableProps) {
   }
 
   async function deleteLead(leadId: string) {
-    if (!confirm('Are you sure you want to delete this lead?')) return
+    if (!confirm('האם אתה בטוח שברצונך למחוק ליד זה?')) return
 
     try {
       await fetch(`/api/leads/${leadId}`, {
@@ -99,7 +99,7 @@ export function LeadsTable({ leads, agents, onUpdate }: LeadsTableProps) {
   if (leads.length === 0) {
     return (
       <div className="text-center py-12 text-muted-foreground">
-        No leads yet. Create your first lead to get started.
+        אין לידים עדיין. צור את הליד הראשון שלך כדי להתחיל.
       </div>
     )
   }
@@ -109,13 +109,13 @@ export function LeadsTable({ leads, agents, onUpdate }: LeadsTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Phone</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Assigned Agent</TableHead>
-            <TableHead>Created</TableHead>
-            <TableHead className="text-right">Actions</TableHead>
+            <TableHead>שם</TableHead>
+            <TableHead>אימייל</TableHead>
+            <TableHead>טלפון</TableHead>
+            <TableHead>סטטוס</TableHead>
+            <TableHead>סוכן משוייך</TableHead>
+            <TableHead>תאריך יצירה</TableHead>
+            <TableHead className="text-left">פעולות</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -153,17 +153,17 @@ export function LeadsTable({ leads, agents, onUpdate }: LeadsTableProps) {
                   }
                 >
                   <SelectTrigger className="w-[200px]">
-                    <SelectValue placeholder="Unassigned">
+                    <SelectValue placeholder="לא משוייך">
                       {lead.assignedAgent ? (
                         <AgentAvatar name={lead.assignedAgent.name} showName />
                       ) : (
-                        'Unassigned'
+                        'לא משוייך'
                       )}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="unassigned">
-                      <span className="text-muted-foreground">Unassigned</span>
+                      <span className="text-muted-foreground">לא משוייך</span>
                     </SelectItem>
                     {agents.map((agent) => (
                       <SelectItem key={agent.id} value={agent.id}>
@@ -174,15 +174,15 @@ export function LeadsTable({ leads, agents, onUpdate }: LeadsTableProps) {
                 </Select>
               </TableCell>
               <TableCell>
-                {new Date(lead.createdAt).toLocaleDateString()}
+                {new Date(lead.createdAt).toLocaleDateString('he-IL')}
               </TableCell>
-              <TableCell className="text-right">
+              <TableCell className="text-left">
                 <Button
                   variant="destructive"
                   size="sm"
                   onClick={() => deleteLead(lead.id)}
                 >
-                  Delete
+                  מחק
                 </Button>
               </TableCell>
             </TableRow>

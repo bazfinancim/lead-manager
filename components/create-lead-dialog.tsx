@@ -32,9 +32,9 @@ import { Button } from '@/components/ui/button'
 import { AgentAvatar } from '@/components/agent-avatar'
 
 const formSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  phone: z.string().min(10, 'Phone number must be at least 10 characters'),
+  name: z.string().min(2, 'שם חייב להכיל לפחות 2 תווים'),
+  email: z.string().email('כתובת אימייל לא תקינה'),
+  phone: z.string().min(10, 'מספר טלפון חייב להכיל לפחות 10 ספרות'),
   assignedAgentId: z.string().optional(),
 })
 
@@ -91,13 +91,13 @@ export function CreateLeadDialog({ agents, onLeadCreated }: CreateLeadDialogProp
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>Create Lead</Button>
+        <Button>צור ליד</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Create New Lead</DialogTitle>
+          <DialogTitle>צור ליד חדש</DialogTitle>
           <DialogDescription>
-            Add a new lead to the system. You can assign it to an agent now or later.
+            הוסף ליד חדש למערכת. ניתן לשייך אותו לסוכן עכשיו או מאוחר יותר.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -107,9 +107,9 @@ export function CreateLeadDialog({ agents, onLeadCreated }: CreateLeadDialogProp
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>שם</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} />
+                    <Input placeholder="ישראל ישראלי" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -120,9 +120,9 @@ export function CreateLeadDialog({ agents, onLeadCreated }: CreateLeadDialogProp
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>אימייל</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="john@example.com" {...field} />
+                    <Input type="email" placeholder="israel@example.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -133,9 +133,9 @@ export function CreateLeadDialog({ agents, onLeadCreated }: CreateLeadDialogProp
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone</FormLabel>
+                  <FormLabel>טלפון</FormLabel>
                   <FormControl>
-                    <Input placeholder="+1234567890" {...field} />
+                    <Input placeholder="050-1234567" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -148,15 +148,15 @@ export function CreateLeadDialog({ agents, onLeadCreated }: CreateLeadDialogProp
                 const selectedAgent = agents.find(a => a.id === field.value)
                 return (
                   <FormItem>
-                    <FormLabel>Assign to Agent (Optional)</FormLabel>
+                    <FormLabel>שייך לסוכן (אופציונלי)</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select an agent">
+                          <SelectValue placeholder="בחר סוכן">
                             {selectedAgent ? (
                               <AgentAvatar name={selectedAgent.name} showName />
                             ) : (
-                              'Select an agent'
+                              'בחר סוכן'
                             )}
                           </SelectValue>
                         </SelectTrigger>
@@ -181,10 +181,10 @@ export function CreateLeadDialog({ agents, onLeadCreated }: CreateLeadDialogProp
                 onClick={() => setOpen(false)}
                 disabled={isLoading}
               >
-                Cancel
+                ביטול
               </Button>
               <Button type="submit" disabled={isLoading}>
-                {isLoading ? 'Creating...' : 'Create Lead'}
+                {isLoading ? 'יוצר...' : 'צור ליד'}
               </Button>
             </div>
           </form>

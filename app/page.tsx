@@ -56,7 +56,7 @@ export default function Home() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-muted-foreground">Loading...</p>
+        <p className="text-muted-foreground">טוען...</p>
       </div>
     )
   }
@@ -64,9 +64,9 @@ export default function Home() {
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">Lead Management System</h1>
+        <h1 className="text-4xl font-bold mb-2">מערכת ניהול לידים</h1>
         <p className="text-muted-foreground">
-          Manage your leads and assign them to agents
+          נהל את הלידים שלך והקצה אותם לסוכנים
         </p>
       </div>
 
@@ -74,9 +74,9 @@ export default function Home() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle>Leads</CardTitle>
+              <CardTitle>לידים</CardTitle>
               <CardDescription>
-                View and manage all your leads in one place
+                צפה ונהל את כל הלידים שלך במקום אחד
               </CardDescription>
             </div>
             <div className="flex gap-2">
@@ -92,20 +92,20 @@ export default function Home() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Statistics</CardTitle>
+          <CardTitle>סטטיסטיקות</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground">Total Leads</p>
+              <p className="text-sm text-muted-foreground">סה״כ לידים</p>
               <p className="text-2xl font-bold">{leads.length}</p>
             </div>
             <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground">Total Agents</p>
+              <p className="text-sm text-muted-foreground">סה״כ סוכנים</p>
               <p className="text-2xl font-bold">{agents.length}</p>
             </div>
             <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground">Unassigned Leads</p>
+              <p className="text-sm text-muted-foreground">לידים לא משוייכים</p>
               <p className="text-2xl font-bold">
                 {leads.filter((lead) => !lead.assignedAgentId).length}
               </p>
