@@ -6,22 +6,22 @@ async function main() {
   // Create some sample agents
   const agent1 = await prisma.agent.create({
     data: {
-      name: 'John Smith',
-      email: 'john.smith@company.com',
+      name: 'דוד כהן',
+      email: 'david.cohen@company.com',
     },
   })
 
   const agent2 = await prisma.agent.create({
     data: {
-      name: 'Sarah Johnson',
-      email: 'sarah.johnson@company.com',
+      name: 'שרה לוי',
+      email: 'sarah.levi@company.com',
     },
   })
 
   const agent3 = await prisma.agent.create({
     data: {
-      name: 'Michael Chen',
-      email: 'michael.chen@company.com',
+      name: 'יוסי מזרחי',
+      email: 'yossi.mizrachi@company.com',
     },
   })
 
@@ -29,50 +29,50 @@ async function main() {
   await prisma.lead.createMany({
     data: [
       {
-        name: 'Alice Brown',
-        email: 'alice.brown@example.com',
-        phone: '+1234567890',
+        name: 'רחל אברהם',
+        email: 'rachel.avraham@example.com',
+        phone: '050-1234567',
         status: 'NEW',
         assignedAgentId: agent1.id,
       },
       {
-        name: 'Bob Wilson',
-        email: 'bob.wilson@example.com',
-        phone: '+1234567891',
+        name: 'משה ישראלי',
+        email: 'moshe.israeli@example.com',
+        phone: '052-2345678',
         status: 'CONTACTED',
         assignedAgentId: agent1.id,
       },
       {
-        name: 'Carol Davis',
-        email: 'carol.davis@example.com',
-        phone: '+1234567892',
+        name: 'יעל כהן',
+        email: 'yael.cohen@example.com',
+        phone: '054-3456789',
         status: 'QUALIFIED',
         assignedAgentId: agent2.id,
       },
       {
-        name: 'David Miller',
-        email: 'david.miller@example.com',
-        phone: '+1234567893',
+        name: 'אבי מילר',
+        email: 'avi.miller@example.com',
+        phone: '050-4567890',
         status: 'WON',
         assignedAgentId: agent2.id,
       },
       {
-        name: 'Emma Garcia',
-        email: 'emma.garcia@example.com',
-        phone: '+1234567894',
+        name: 'תמר גרסיה',
+        email: 'tamar.garcia@example.com',
+        phone: '052-5678901',
         status: 'NEW',
         assignedAgentId: agent3.id,
       },
       {
-        name: 'Frank Martinez',
-        email: 'frank.martinez@example.com',
-        phone: '+1234567895',
+        name: 'רון מרטינז',
+        email: 'ron.martinez@example.com',
+        phone: '054-6789012',
         status: 'CONTACTED',
       },
       {
-        name: 'Grace Lee',
-        email: 'grace.lee@example.com',
-        phone: '+1234567896',
+        name: 'חן לי',
+        email: 'chen.lee@example.com',
+        phone: '050-7890123',
         status: 'LOST',
         assignedAgentId: agent3.id,
       },

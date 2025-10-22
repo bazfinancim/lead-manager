@@ -52,6 +52,14 @@ const statusColors: Record<LeadStatus, string> = {
   LOST: 'bg-red-500',
 }
 
+const statusLabels: Record<LeadStatus, string> = {
+  NEW: 'חדש',
+  CONTACTED: 'נוצר קשר',
+  QUALIFIED: 'מוסמך',
+  WON: 'נסגר',
+  LOST: 'אבד',
+}
+
 export function LeadsTable({ leads, agents, onUpdate }: LeadsTableProps) {
   async function updateLeadStatus(leadId: string, status: LeadStatus) {
     try {
@@ -131,15 +139,15 @@ export function LeadsTable({ leads, agents, onUpdate }: LeadsTableProps) {
                 >
                   <SelectTrigger className="w-[140px]">
                     <SelectValue>
-                      <Badge className={statusColors[lead.status]}>
-                        {lead.status}
-                      </Badge>
+                      {statusLabels[lead.status]}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     {Object.values(LeadStatus).map((status) => (
                       <SelectItem key={status} value={status}>
-                        <Badge className={statusColors[status]}>{status}</Badge>
+                        <div className="flex items-center gap-2">
+                          <Badge className={statusColors[status]}>{statusLabels[status]}</Badge>
+                        </div>
                       </SelectItem>
                     ))}
                   </SelectContent>
